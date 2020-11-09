@@ -188,11 +188,23 @@ function removeTodo() {
   }).catch(function (err) {
     return console.error(err);
   });
-} // SIMULTANEOUS DATA
+} // Simultaneous data.
 
 
 function getData() {
-  console.log('Simultaneous Request');
+  // axios
+  // 	.all([axios.get('http://jsonplaceholder.typicode.com/todos'), axios.get('http://jsonplaceholder.typicode.com/posts')])
+  // 	.then((res) => {
+  // 		console.log(res[0]);
+  // 		console.log(res[1]);
+  // 		showOutput(res[1]);
+  // 	})
+  // 	.catch((err) => console.error(err));
+  axios.all([axios.get('http://jsonplaceholder.typicode.com/todos?_limit=8'), axios.get('http://jsonplaceholder.typicode.com/posts?_limit=5')]).then(axios.spread(function (todos, posts) {
+    return showOutput(posts);
+  })).catch(function (err) {
+    return console.error(err);
+  });
 } // CUSTOM HEADERS
 
 
