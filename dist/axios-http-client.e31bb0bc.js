@@ -225,10 +225,16 @@ function errorHandling() {
 
 function cancelToken() {
   console.log('Cancel Token');
-} // INTERCEPTING REQUESTS & RESPONSES
-// AXIOS INSTANCES
-// Show output in browser
+} // Intercepting requests and responses.
 
+
+axios.interceptors.request.use(function (config) {
+  console.log("".concat(config.method.toUpperCase(), " request sent to ").concat(config.url, " at ").concat(new Date().getTime()));
+  return config;
+}, function (error) {
+  return Promise.reject(error);
+}); // AXIOS INSTANCES
+// Show output in browser
 
 function showOutput(res) {
   document.getElementById('res').innerHTML = "\n  <div class=\"card card-body mb-4\">\n    <h5>Status: ".concat(res.status, "</h5>\n  </div>\n  <div class=\"card mt-3\">\n    <div class=\"card-header\">\n      Headers\n    </div>\n    <div class=\"card-body\">\n      <pre>").concat(JSON.stringify(res.headers, null, 2), "</pre>\n    </div>\n  </div>\n  <div class=\"card mt-3\">\n    <div class=\"card-header\">\n      Data\n    </div>\n    <div class=\"card-body\">\n      <pre>").concat(JSON.stringify(res.data, null, 2), "</pre>\n    </div>\n  </div>\n  <div class=\"card mt-3\">\n    <div class=\"card-header\">\n      Config\n    </div>\n    <div class=\"card-body\">\n      <pre>").concat(JSON.stringify(res.config, null, 2), "</pre>\n    </div>\n  </div>\n");
