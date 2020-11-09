@@ -104,9 +104,21 @@ function customHeaders() {
 		.catch((err) => console.error(err));
 }
 
-// TRANSFORMING REQUESTS & RESPONSES
+// Transforming requests and responses.
 function transformResponse() {
-	console.log('Transform Response');
+	const options = {
+		method: 'post',
+		url: 'http://jsonplaceholder.typicode.com/todos',
+		data: {
+			title: 'Hello there?',
+		},
+		transformResponse: axios.defaults.transformResponse.concat((data) => {
+			data.title = data.title.toUpperCase();
+			return data;
+		}),
+	};
+
+	axios(options).then((res) => showOutput(res));
 }
 
 // ERROR HANDLING

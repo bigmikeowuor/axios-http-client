@@ -223,11 +223,24 @@ function customHeaders() {
   }).catch(function (err) {
     return console.error(err);
   });
-} // TRANSFORMING REQUESTS & RESPONSES
+} // Transforming requests and responses.
 
 
 function transformResponse() {
-  console.log('Transform Response');
+  var options = {
+    method: 'post',
+    url: 'http://jsonplaceholder.typicode.com/todos',
+    data: {
+      title: 'Hello there?'
+    },
+    transformResponse: axios.defaults.transformResponse.concat(function (data) {
+      data.title = data.title.toUpperCase();
+      return data;
+    })
+  };
+  axios(options).then(function (res) {
+    return showOutput(res);
+  });
 } // ERROR HANDLING
 
 
