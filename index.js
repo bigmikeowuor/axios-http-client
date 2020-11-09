@@ -6,7 +6,7 @@ axios.defaults.headers.common['X-Auth-Token'] =
 function getTodos() {
 	// 	axios({
 	// 		method: 'get',
-	// 		url: 'http://jsonplaceholder.typicode.com/todos',
+	// 		url: 'https://jsonplaceholder.typicode.com/todos',
 	// 		params: {
 	// 			_limit: 8,
 	// 		},
@@ -15,7 +15,7 @@ function getTodos() {
 	// 		.catch((err) => console.error(err));
 
 	axios
-		.get('http://jsonplaceholder.typicode.com/todos', { params: { _limit: 8 } })
+		.get('https://jsonplaceholder.typicode.com/todos', { params: { _limit: 8 } })
 		.then((res) => showOutput(res))
 		.catch((err) => console.error(err));
 }
@@ -24,7 +24,7 @@ function getTodos() {
 function addTodo() {
 	// axios({
 	// 	method: 'post',
-	// 	url: 'http://jsonplaceholder.typicode.com/todos',
+	// 	url: 'https://jsonplaceholder.typicode.com/todos',
 	// 	data: {
 	// 		title: 'New ToDo',
 	// 		completed: false,
@@ -34,7 +34,7 @@ function addTodo() {
 	// 	.catch((err) => console.error(err));
 
 	axios
-		.post('http://jsonplaceholder.typicode.com/todos', {
+		.post('https://jsonplaceholder.typicode.com/todos', {
 			title: 'New ToDo',
 			completed: false,
 		})
@@ -45,7 +45,7 @@ function addTodo() {
 // PUT/PATCH request.
 function updateTodo() {
 	// axios
-	// .put('http://jsonplaceholder.typicode.com/todos/1', {
+	// .put('https://jsonplaceholder.typicode.com/todos/1', {
 	// 	title: 'Updated using PUT',
 	// 	completed: true,
 	// })
@@ -53,7 +53,7 @@ function updateTodo() {
 	// .catch((err) => console.error(err));
 
 	axios
-		.patch('http://jsonplaceholder.typicode.com/todos/1', {
+		.patch('https://jsonplaceholder.typicode.com/todos/1', {
 			title: 'Updated using PATCH',
 			completed: true,
 		})
@@ -64,7 +64,7 @@ function updateTodo() {
 // DELETE request.
 function removeTodo() {
 	axios
-		.delete('http://jsonplaceholder.typicode.com/todos/1')
+		.delete('https://jsonplaceholder.typicode.com/todos/1')
 		.then((res) => showOutput(res))
 		.catch((err) => console.error(err));
 }
@@ -72,7 +72,7 @@ function removeTodo() {
 // Simultaneous data.
 function getData() {
 	// axios
-	// 	.all([axios.get('http://jsonplaceholder.typicode.com/todos'), axios.get('http://jsonplaceholder.typicode.com/posts')])
+	// 	.all([axios.get('https://jsonplaceholder.typicode.com/todos'), axios.get('https://jsonplaceholder.typicode.com/posts')])
 	// 	.then((res) => {
 	// 		console.log(res[0]);
 	// 		console.log(res[1]);
@@ -81,7 +81,7 @@ function getData() {
 	// 	.catch((err) => console.error(err));
 
 	axios
-		.all([axios.get('http://jsonplaceholder.typicode.com/todos?_limit=8'), axios.get('http://jsonplaceholder.typicode.com/posts?_limit=5')])
+		.all([axios.get('https://jsonplaceholder.typicode.com/todos?_limit=8'), axios.get('https://jsonplaceholder.typicode.com/posts?_limit=5')])
 		.then(axios.spread((todos, posts) => showOutput(posts)))
 		.catch((err) => console.error(err));
 }
@@ -97,7 +97,7 @@ function customHeaders() {
 
 	axios
 		.post(
-			'http://jsonplaceholder.typicode.com/todos',
+			'https://jsonplaceholder.typicode.com/todos',
 			{
 				title: 'New ToDo',
 				completed: false,
@@ -112,7 +112,7 @@ function customHeaders() {
 function transformResponse() {
 	const options = {
 		method: 'post',
-		url: 'http://jsonplaceholder.typicode.com/todos',
+		url: 'https://jsonplaceholder.typicode.com/todos',
 		data: {
 			title: 'Hello there?',
 		},
@@ -128,7 +128,7 @@ function transformResponse() {
 // Error handling.
 function errorHandling() {
 	axios
-		.get('http://jsonplaceholder.typicode.com/todoss')
+		.get('https://jsonplaceholder.typicode.com/todoss')
 		.then((res) => showOutput(res))
 		.catch((err) => {
 			if (err.response) {
@@ -154,7 +154,7 @@ function cancelToken() {
 	const source = axios.CancelToken.source();
 
 	axios
-		.get('http://jsonplaceholder.typicode.com/todos', {
+		.get('https://jsonplaceholder.typicode.com/todos', {
 			cancelToken: source.token,
 		})
 		.then((res) => showOutput(res))
@@ -183,7 +183,7 @@ axios.interceptors.request.use(
 // Axios Instances.
 const axiosInstance = axios.create({
 	// Other custom settings
-	baseURL: 'http://jsonplaceholder.typicode.com',
+	baseURL: 'https://jsonplaceholder.typicode.com',
 });
 
 // axiosInstance.get('/comments').then(res => showOutput(res));
