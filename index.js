@@ -38,9 +38,23 @@ function addTodo() {
 		.catch((err) => console.error(err));
 }
 
-// PUT/PATCH REQUEST
+// PUT/PATCH request.
 function updateTodo() {
-	console.log('PUT/PATCH Request');
+	// axios
+	// .put('http://jsonplaceholder.typicode.com/todos/1', {
+	// 	title: 'Updated using PUT',
+	// 	completed: true,
+	// })
+	// .then((res) => showOutput(res))
+	// .catch((err) => console.error(err));
+
+	axios
+		.patch('http://jsonplaceholder.typicode.com/todos/1', {
+			title: 'Updated using PATCH',
+			completed: true,
+		})
+		.then((res) => showOutput(res))
+		.catch((err) => console.error(err));
 }
 
 // DELETE REQUEST
