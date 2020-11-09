@@ -179,11 +179,15 @@ function updateTodo() {
   }).catch(function (err) {
     return console.error(err);
   });
-} // DELETE REQUEST
+} // DELETE request.
 
 
 function removeTodo() {
-  console.log('DELETE Request');
+  axios.delete('http://jsonplaceholder.typicode.com/todos/1').then(function (res) {
+    return showOutput(res);
+  }).catch(function (err) {
+    return console.error(err);
+  });
 } // SIMULTANEOUS DATA
 
 

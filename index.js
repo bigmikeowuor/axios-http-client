@@ -57,9 +57,12 @@ function updateTodo() {
 		.catch((err) => console.error(err));
 }
 
-// DELETE REQUEST
+// DELETE request.
 function removeTodo() {
-	console.log('DELETE Request');
+	axios
+		.delete('http://jsonplaceholder.typicode.com/todos/1')
+		.then((res) => showOutput(res))
+		.catch((err) => console.error(err));
 }
 
 // SIMULTANEOUS DATA
