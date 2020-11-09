@@ -247,7 +247,25 @@ function transformResponse() {
 
 
 function errorHandling() {
-  console.log('Error Handling');
+  axios.get('http://jsonplaceholder.typicode.com/todoss').then(function (res) {
+    return showOutput(res);
+  }).catch(function (err) {
+    if (error.response) {
+      // server responded with a status other than 200 range
+      console.log(err.response.data);
+      console.log(err.response.status);
+      console.log(err.response.headers);
+
+      if (err.response.status === 404) {
+        alert('Error: Page Not Found');
+      }
+    } else if (err.request) {
+      // Request was made but no response
+      console.error(err.request);
+    } else {
+      console.error(err.message);
+    }
+  });
 } // Cancel token.
 
 
