@@ -205,11 +205,24 @@ function getData() {
   })).catch(function (err) {
     return console.error(err);
   });
-} // CUSTOM HEADERS
+} // Custom headers
 
 
 function customHeaders() {
-  console.log('Custom Headers');
+  var config = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'jwt-token'
+    }
+  };
+  axios.post('http://jsonplaceholder.typicode.com/todos', {
+    title: 'New ToDo',
+    completed: false
+  }, config).then(function (res) {
+    return showOutput(res);
+  }).catch(function (err) {
+    return console.error(err);
+  });
 } // TRANSFORMING REQUESTS & RESPONSES
 
 

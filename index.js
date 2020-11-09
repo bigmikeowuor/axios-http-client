@@ -82,9 +82,26 @@ function getData() {
 		.catch((err) => console.error(err));
 }
 
-// CUSTOM HEADERS
+// Custom headers
 function customHeaders() {
-	console.log('Custom Headers');
+	const config = {
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: 'jwt-token',
+		},
+	};
+
+	axios
+		.post(
+			'http://jsonplaceholder.typicode.com/todos',
+			{
+				title: 'New ToDo',
+				completed: false,
+			},
+			config
+		)
+		.then((res) => showOutput(res))
+		.catch((err) => console.error(err));
 }
 
 // TRANSFORMING REQUESTS & RESPONSES
