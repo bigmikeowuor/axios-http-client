@@ -118,7 +118,9 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"index.js":[function(require,module,exports) {
-// GET request.
+// Axios globals.
+axios.defaults.headers.common['X-Auth-Token'] = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'; // GET request.
+
 function getTodos() {
   // 	axios({
   // 		method: 'get',
@@ -241,12 +243,12 @@ function transformResponse() {
   axios(options).then(function (res) {
     return showOutput(res);
   });
-} // ERROR HANDLING
+} // Error handling.
 
 
 function errorHandling() {
   console.log('Error Handling');
-} // CANCEL TOKEN
+} // Cancel token.
 
 
 function cancelToken() {

@@ -1,3 +1,7 @@
+// Axios globals.
+axios.defaults.headers.common['X-Auth-Token'] =
+	'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+
 // GET request.
 function getTodos() {
 	// 	axios({
@@ -121,12 +125,12 @@ function transformResponse() {
 	axios(options).then((res) => showOutput(res));
 }
 
-// ERROR HANDLING
+// Error handling.
 function errorHandling() {
 	console.log('Error Handling');
 }
 
-// CANCEL TOKEN
+// Cancel token.
 function cancelToken() {
 	console.log('Cancel Token');
 }
