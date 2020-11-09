@@ -131,7 +131,7 @@ function errorHandling() {
 		.get('http://jsonplaceholder.typicode.com/todoss')
 		.then((res) => showOutput(res))
 		.catch((err) => {
-			if (error.response) {
+			if (err.response) {
 				// server responded with a status other than 200 range
 				console.log(err.response.data);
 				console.log(err.response.status);
@@ -151,7 +151,22 @@ function errorHandling() {
 
 // Cancel token.
 function cancelToken() {
-	console.log('Cancel Token');
+	const source = axios.CancelToken.source();
+
+	axios
+		.get('http://jsonplaceholder.typicode.com/todos', {
+			cancelToken: source.token,
+		})
+		.then((res) => showOutput(res))
+		.catch((thrown) => {
+			if (axios.isCancel(thrown)) {
+				console.log('Request canceled', thrown.message);
+			}
+		});
+
+	if (true) {
+		source.cancel('Request canceled!');
+	}
 }
 
 // Intercepting requests and responses.
@@ -165,7 +180,13 @@ axios.interceptors.request.use(
 	}
 );
 
-// AXIOS INSTANCES
+// Axios Instances.
+const axiosInstance = axios.create({
+	// Other custom settings
+	baseURL: 'http://jsonplaceholder.typicode.com',
+});
+
+// axiosInstance.get('/comments').then(res => showOutput(res));
 
 // Show output in browser
 function showOutput(res) {
