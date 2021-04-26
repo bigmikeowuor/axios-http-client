@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "axios-http-s3"
+    "default": "axios-http-client-swap"
   }
 }

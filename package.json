@@ -20,5 +20,6 @@
 	"homepage": "https://github.com/bigmikeowuor/axios-http-client#readme",
 	"devDependencies": {
 		"parcel-bundler": "^1.12.4"
-	}
+	},
+	"dependencies": {}
 }
