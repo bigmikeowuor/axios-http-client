@@ -1,11 +1,29 @@
-# create production build
-FROM nginx:stable-alpine
+# build stage
+FROM node:lts-alpine as build-stage
 
-# copy project files and folders to production working directory
-COPY . /usr/share/nginx/html
+# make the 'app' folder the current working directory
+WORKDIR /app
 
-# default container port
+# copy both 'package.json' and 'package-lock.json'
+COPY package*.json ./
+
+# install project dependencies
+RUN npm install
+
+# copy project files and folders to the /app directory
+COPY . .
+
+# build app for production with minification
+RUN npm run build
+
+# production stage
+FROM nginx:stable-alpine as production-stage
+
+# copy production artifacts from the /app directory
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+
+# make the container port accessible by external services
 EXPOSE 80
 
-# start the application
+# provide defaults for executing the container
 CMD ["nginx", "-g", "daemon off;"]

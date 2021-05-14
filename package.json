@@ -1,0 +1,21 @@
+{
+	"name": "axios-http-client",
+	"version": "1.0.0",
+	"description": "Using the Axios HTTP client to make requests, add headers, create interceptors and more.",
+	"main": "index.html",
+	"scripts": {
+		"dev": "parcel index.html",
+		"build": "parcel build index.html"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/bigmikeowuor/axios-http-client.git"
+	},
+	"keywords": [],
+	"author": "Michael Owuor",
+	"license": "ISC",
+	"homepage": "https://axios-http-client.s3.co.ke/",
+	"dependencies": {
+		"parcel-bundler": "^1.12.5"
+	}
+}

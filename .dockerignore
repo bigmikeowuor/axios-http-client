@@ -1,6 +1,9 @@
 # dependecies folder
 node_modules/
 
+# miscellaneous
+.cache/
+
 # git files
 .git
 .gitignore

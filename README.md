@@ -7,6 +7,7 @@ Using the Axios HTTP client to make requests, add headers, create interceptors a
 1. HTML.
 1. Bootstrap CSS.
 1. Axios promise based HTTP client.
+1. Google Cloud Build.
 1. Google Cloud Run.
 
 ## Live Site
